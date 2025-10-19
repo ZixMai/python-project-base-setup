@@ -4,10 +4,7 @@ ENV PYTHONUNBUFFERED=1 \
     UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy
 
-COPY . /app
-
 # Install the application dependencies.
-WORKDIR /app
 RUN apk add --no-cache \
     build-base \
     gfortran \
@@ -17,11 +14,15 @@ RUN apk add --no-cache \
     python3-dev \
     musl-dev
 
+WORKDIR /app
+
 # Install dependencies
+COPY pyproject.toml uv.lock* ./
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --frozen --no-install-project --no-dev --no-cache
 
-# Запуск: просто python main.py
-ENTRYPOINT ["uv", "run", "python", "main.py"]
+COPY . .
+EXPOSE 8888
+CMD ["uv", "run", "jupyter-notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
