@@ -9,6 +9,7 @@ dependencies = [
     "notebook==7.4.7",
     "numpy==2.3.3",
     "pandas==2.3.3",
+    "pingouin==0.5.5",
     "scikit-learn==1.7.2",
     "seaborn==0.13.2",
 ]
