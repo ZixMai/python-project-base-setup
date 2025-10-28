@@ -1,10 +1,9 @@
-FROM ghcr.io/astral-sh/uv:python3.14-alpine AS app
+FROM ghcr.io/astral-sh/uv:python3.14-alpine AS build
 
 ENV PYTHONUNBUFFERED=1 \
     UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy
 
-# Install the application dependencies.
 RUN apk add --no-cache \
     build-base \
     gfortran \
@@ -16,13 +15,24 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-# Install dependencies
 COPY pyproject.toml uv.lock* ./
 RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project --no-dev --no-cache
+    uv sync --frozen --no-install-project --no-dev --no-group browser
+RUN rm -rf /root/.cache /tmp/*
 
-COPY . .
+
+FROM python:3.14-alpine AS runtime
+
+WORKDIR /app
+COPY --from=build /app /app
+
+RUN apk add --no-cache \
+    libstdc++ \
+    openblas
+
+ENV VIRTUAL_ENV=/app/.venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
 EXPOSE 8888
-CMD ["uv", "run", "jupyter-notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
+
+CMD ["python", "-m", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
