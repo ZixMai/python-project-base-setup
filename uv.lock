@@ -940,8 +940,10 @@ dependencies = [
     { name = "pandas-stubs" },
     { name = "pingouin" },
     { name = "playwright" },
+    { name = "pyagrum" },
     { name = "scikit-learn" },
     { name = "seaborn" },
+    { name = "ucimlrepo" },
     { name = "xgboost" },
 ]
 
@@ -962,8 +964,10 @@ requires-dist = [
     { name = "pandas-stubs", specifier = "==2.3.2.250926" },
     { name = "pingouin", specifier = "==0.5.5" },
     { name = "playwright", specifier = "==1.55.0" },
+    { name = "pyagrum", specifier = "==2.3.0" },
     { name = "scikit-learn", specifier = "==1.7.2" },
     { name = "seaborn", specifier = "==0.13.2" },
+    { name = "ucimlrepo", specifier = "==0.0.7" },
     { name = "xgboost", specifier = "==3.1.1" },
 ]
 
@@ -1369,12 +1373,41 @@ wheels = [
 ]
 
 [[package]]
+name = "pyagrum"
+version = "2.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "pydot" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/89/57/245411a552b05f8b526c1283615fb5f94b0d86668d65a6e477e006bb9848/pyagrum-2.3.0-cp310-abi3-macosx_10_15_x86_64.whl", hash = "sha256:01a38dbca822719c54fae447cb654b51b9e1e9fbf2203ad97e8543a977d81dbe", size = 4822983, upload-time = "2025-10-27T10:15:25.864Z" },
+    { url = "https://files.pythonhosted.org/packages/a9/ca/7d841a9018b68cd033e7d6d8baf8e85e1a90b04f2da714009dd4e56d595b/pyagrum-2.3.0-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:1f14791021d81e3cfd7c24eeb99b9f76df25aeec0861d7ab48f2c757e140339e", size = 4231043, upload-time = "2025-10-27T10:15:28.424Z" },
+    { url = "https://files.pythonhosted.org/packages/99/06/5b78c66465546aeb4df6f5c55b413b757926c00dceeb598f28fe3b36bb55/pyagrum-2.3.0-cp310-abi3-manylinux2014_aarch64.whl", hash = "sha256:5f08489e1d5f3f47832573d48a4d155059879cffd84fc5df925f00b109fd080a", size = 6047159, upload-time = "2025-10-27T10:15:30.489Z" },
+    { url = "https://files.pythonhosted.org/packages/83/c5/c444bfc77c0a3f6e186d77233c38bf0c9210214e30de8a8870251284a42b/pyagrum-2.3.0-cp310-abi3-manylinux2014_x86_64.whl", hash = "sha256:aba8f230a622c8f5137a89b3e4829e72a92cb20a9cf5fb663c960d46d0f79557", size = 6644484, upload-time = "2025-10-27T10:15:32.128Z" },
+    { url = "https://files.pythonhosted.org/packages/84/c3/0bb820471098c0fbe74bd561899e0105f2d562676b37fc5e5e38a6d90510/pyagrum-2.3.0-cp310-abi3-win_amd64.whl", hash = "sha256:4cb87ca82fdc7a7c0b4fd035c0b661a22cf00887d2a54758e277f1e8d88176a3", size = 3135138, upload-time = "2025-10-27T10:15:33.638Z" },
+]
+
+[[package]]
 name = "pycparser"
 version = "2.23"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/fe/cf/d2d3b9f5699fb1e4615c8e32ff220203e43b248e1dfcc6736ad9057731ca/pycparser-2.23.tar.gz", hash = "sha256:78816d4f24add8f10a06d6f05b4d424ad9e96cfebf68a4ddc99c65c0720d00c2", size = 173734, upload-time = "2025-09-09T13:23:47.91Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a0/e3/59cd50310fc9b59512193629e1984c1f95e5c8ae6e5d8c69532ccc65a7fe/pycparser-2.23-py3-none-any.whl", hash = "sha256:e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934", size = 118140, upload-time = "2025-09-09T13:23:46.651Z" },
+]
+
+[[package]]
+name = "pydot"
+version = "4.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyparsing" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/50/35/b17cb89ff865484c6a20ef46bf9d95a5f07328292578de0b295f4a6beec2/pydot-4.0.1.tar.gz", hash = "sha256:c2148f681c4a33e08bf0e26a9e5f8e4099a82e0e2a068098f32ce86577364ad5", size = 162594, upload-time = "2025-06-17T20:09:56.454Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7e/32/a7125fb28c4261a627f999d5fb4afff25b523800faed2c30979949d6facd/pydot-4.0.1-py3-none-any.whl", hash = "sha256:869c0efadd2708c0be1f916eb669f3d664ca684bc57ffb7ecc08e70d5e93fee6", size = 37087, upload-time = "2025-06-17T20:09:55.25Z" },
 ]
 
 [[package]]
@@ -1887,6 +1920,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/95/32/1a225d6164441be760d75c2c42e2780dc0873fe382da3e98a2e1e48361e5/tzdata-2025.2.tar.gz", hash = "sha256:b60a638fcc0daffadf82fe0f57e53d06bdec2f36c4df66280ae79bce6bd6f2b9", size = 196380, upload-time = "2025-03-23T13:54:43.652Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5c/23/c7abc0ca0a1526a0774eca151daeb8de62ec457e77262b66b359c3c7679e/tzdata-2025.2-py2.py3-none-any.whl", hash = "sha256:1a403fada01ff9221ca8044d701868fa132215d84beb92242d9acd2147f667a8", size = 347839, upload-time = "2025-03-23T13:54:41.845Z" },
+]
+
+[[package]]
+name = "ucimlrepo"
+version = "0.0.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "certifi" },
+    { name = "pandas" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/87/7c/f5a400cc99a5365d153609ebf803084f78b4638b0f7925aa31d9abb62b8e/ucimlrepo-0.0.7.tar.gz", hash = "sha256:4cff3f9e814367dd60956da999ace473197237b9fce4c07e9a689e77b4ffb59a", size = 9369, upload-time = "2024-05-21T06:06:41.465Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3b/07/1252560194df2b4fad1cb3c46081b948331c63eb1bb0b97620d508d12a53/ucimlrepo-0.0.7-py3-none-any.whl", hash = "sha256:0a5ce7e21d7ec850a0da4427c47f9dd96fcc6532f1c7e95dcec63eeb40f08026", size = 8041, upload-time = "2024-05-21T06:06:39.826Z" },
 ]
 
 [[package]]
