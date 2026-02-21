@@ -6,8 +6,3 @@ services:
     container_name: my-jupyter
     ports:
       - "8888:8888"
-    volumes:
-      - .:/app
-      - /app/.venv
-      - /app/.git
-      - /app/.idea
